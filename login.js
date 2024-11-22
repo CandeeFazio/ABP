@@ -1,66 +1,40 @@
-let a =0;
+// Manejo del envío del formulario de inicio de sesión
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe de manera tradicional y recargue la página
 
-function like() {
-    a = a + 1;
-    document.getElementById("megusta").innerHTML = a + " me gusta";
-    document.getElementById("corazon").style.color="red";
-}
+    const username = document.getElementById('username').value.trim(); // Obtiene el nombre de usuario del formulario
+    const password = document.getElementById('password').value.trim(); // Obtiene la contraseña del formulario
 
+    // Validación de campos vacíos
+    if (!username || !password) {
+        document.getElementById('loginMessage').textContent = "Por favor, ingrese todos los datos."; // Muestra un mensaje si falta algún campo
+        return; // Detiene la ejecución si los campos no están completos
+    }
 
-function registrar() {
-    let contenidoboton = document.getElementById("btnregistrar").innerHTML
-    if (contenidoboton == "Registrar") {
-        document.getElementById("boxconfircontrasena").style.display = "flex";
-        document.getElementById("btnlogin").style.display = "none";
-        document.getElementById("btnregistrar").innerHTML = "Crear nuevo usuario"
+    // Guardar el nombre de usuario en el almacenamiento local para su uso posterior
+    localStorage.setItem('username', username);
+
+    // Mostrar un mensaje de éxito y redirigir al usuario a la página principal
+    document.getElementById('loginMessage').textContent = "Inicio de sesión exitoso. Redirigiendo...";
+    
+    // Redirigir a la página principal después de 1 segundo
+    setTimeout(() => {
+        window.location.href = "index.html"; // Redirige a la página de inicio (puede cambiarse según sea necesario)
+    }, 1000); // Retraso de 1 segundo antes de la redirección
+});
+
+// Manejo del segundo bloque del formulario de inicio de sesión (función duplicada)
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita el comportamiento de envío estándar del formulario
+
+    // Simulación de validación de autenticación (en un caso real, esto sería verificado por un backend)
+    let isAuthenticated = true; // Simula si la autenticación es exitosa
+
+    if (isAuthenticated) {
+        // Si la autenticación es exitosa, redirige al usuario a la página principal
+        window.location.href = 'index.html'; // Redirige a 'index.html' al usuario autenticado
     } else {
-        contrasena = document.getElementById("inputcontrasena").value;
-        confircontrasena = document.getElementById("inputconfircontrasena").value
-        if (contrasena == confircontrasena){
-            let usuario = document.getElementById("inputusuario").value;
-            let contrasena = document.getElementById("inputcontrasena").value;
-            localStorage.setItem(usuario, contrasena)
-            alert("Se ha creado un nuevo usuario")
-        }else{
-            alert("contraseñas incorrectas")
-        }
+        // Si la autenticación falla, muestra un mensaje de error
+        alert('Usuario o contraseña incorrectos'); // Muestra un mensaje de error si las credenciales son incorrectas
     }
-}
-
-function login() {
-    let usuario = document.getElementById("inputusuario").value;
-    let contrasena = document.getElementById("inputcontrasena").value;
-    let contrasenastore = localStorage.getItem(usuario)
-    console.log(contrasenastore)
-    if (contrasena == contrasenastore) {
-        alert("Bienvenido")
-    }else{
-        alert("Usuario o contraseña incorrecta")
-    }
-}
-
-
-
-let contrasena = "";
-let confircontrasena = "";
-
-function vercontrasena() {
-    let ojito = document.getElementById("imgojito").src
-    if ( ojito.includes("novisible.svg")) {
-        document.getElementById("imgojito").src ="visible.svg"
-        document.getElementById("inputcontrasena").type = "password"
-    } else {
-        document.getElementById("imgojito").src ="novisible.svg"
-        document.getElementById("inputcontrasena").type = "text"
-    }
-}
-function vercontrasena2() {    
-    let ojito2 = document.getElementById("imgojito2").src
-    if ( ojito2.includes("novisible.svg")) {
-        document.getElementById("imgojito2").src ="visible.svg"
-        document.getElementById("inputconfircontrasena").type = "password"
-    } else {
-        document.getElementById("imgojito2").src ="novisible.svg"
-        document.getElementById("inputconfircontrasena").type = "text"
-    }
-}
+});

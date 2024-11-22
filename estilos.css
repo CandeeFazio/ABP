@@ -1,0 +1,61 @@
+/* Navbar */
+.navbar {
+    background-color: #7cacdf; /* Azul característico de Twitter */
+    color: white;
+  }
+  .navbar-brand, .nav-link {
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  /* Botón para publicar */
+  #postBtn {
+    background-color: #e8a7f7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  /* Estilo de cada tweet */
+  .tweet-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #E1E8ED;
+    font-size: 14px;
+  }
+  
+  /* Botón para eliminar */
+  .delete-btn {
+    color: #E0245E; /* Rojo para destacar */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Estilo del formulario de inicio de sesión */
+  .container h2 {
+    color: #7cacdf; /* Color de título en el formulario */
+  }
+  .form-control {
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .btn-primary {
+    background-color: #7cacdf; /* Azul personalizado */
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background-color: #669cc7; /* Azul un poco más oscuro en hover */
+  }
+  
